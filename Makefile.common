@@ -6,13 +6,13 @@ BIN=$(OUTPUT_FILENAME).bin
 HEX=$(OUTPUT_FILENAME).hex 
 OUT=$(OUTPUT_FILENAME).out                  
 
-GNU_INSTALL_ROOT=/usr/local
-GNU_PREFIX=arm-none-eabi
+GNU_INSTALL_ROOT?=/usr/local
+GNU_PREFIX?=arm-none-eabi
 
-SDK_PATH=$(HOME)/Work/Internal/nordic-master/nordic-sdk
-TEMPLATE_PATH=$(SDK_PATH)/components/toolchain/gcc
-OPENOCDPATH=/usr/local
-S130_HEX_FILE=$(SDK_PATH)/components/softdevice/s130/hex/s130_nrf51_2.0.1_softdevice.hex
+SDK_PATH?=$(HOME)/Work/Internal/nordic-master/nordic-sdk
+TEMPLATE_PATH?=$(SDK_PATH)/components/toolchain/gcc
+OPENOCDPATH?=/usr/local
+S130_HEX_FILE?=$(SDK_PATH)/components/softdevice/s130/hex/s130_nrf51_2.0.1_softdevice.hex
 
 MK := mkdir
 RM := rm -rf
@@ -178,6 +178,7 @@ vpath %.c $(SDK_PATH)/components/toolchain
 vpath %.c $(SDK_PATH)/components/toolchain/gcc
 vpath %.s $(SDK_PATH)/components/toolchain/gcc
 vpath %.S $(SDK_PATH)/components/toolchain/gcc
+vpath %.c ./external
 
 ## Create build directories
 $(BUILD_DIRECTORIES):
